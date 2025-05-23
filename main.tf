@@ -17,6 +17,7 @@ module "ecr" {
   repository_image_tag_mutability = var.repository_image_tag_mutability
   repository_force_delete         = var.repository_force_delete
   repository_image_scan_on_push   = var.repository_image_scan_on_push
+  repository_read_write_access_arns = var.repository_read_write_access_arns
 }
 
 module "nlb" {
