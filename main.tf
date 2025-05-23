@@ -18,3 +18,10 @@ module "ecr" {
   repository_force_delete         = var.repository_force_delete
   repository_image_scan_on_push   = var.repository_image_scan_on_push
 }
+
+module "nlb" {
+  source      = "./modules/nlb"
+  nlb_name    = var.nlb_name
+  vpc_id      = module.vpc.vpc_id
+  subnet_ids  = module.vpc.private_subnet_ids
+}
