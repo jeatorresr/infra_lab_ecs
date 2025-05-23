@@ -19,6 +19,11 @@ variable "private_subnets" {
   type        = list(string)
 }
 
+variable "vpc_id" {
+  description = "VPC ID"
+  type        = string
+}
+
 #ECR
 variable "repository_name" {
   description = "The name of the repository"
@@ -54,4 +59,18 @@ variable "repository_read_write_access_arns" {
   description = "The ARNs of the IAM users/roles that have read/write access to the repository"
   type        = list(string)
   default     = []
+}
+
+#NLB
+variable "nlb_name" {
+  description = "NLB name"
+  type        = string
+  default     = ""
+}
+
+#ECS Fargate
+variable "cluster_name" {
+  description = "Cluster name"
+  type        = string
+  default     = ""
 }
