@@ -20,8 +20,13 @@ module "ecr" {
 }
 
 module "nlb" {
-  source      = "./modules/nlb"
-  nlb_name    = var.nlb_name
-  vpc_id      = module.vpc.vpc_id
-  subnet_ids  = module.vpc.private_subnet_ids
+  source     = "./modules/nlb"
+  nlb_name   = var.nlb_name
+  vpc_id     = module.vpc.vpc_id
+  subnet_ids = module.vpc.private_subnet_ids
+}
+
+module "aws_ecs_cluster" {
+  source       = "./modules/ecs_cluster"
+  cluster_name = var.cluster_name
 }

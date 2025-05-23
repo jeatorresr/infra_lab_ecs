@@ -21,7 +21,7 @@ variable "private_subnets" {
 
 variable "vpc_id" {
   description = "VPC ID"
-  type = string
+  type        = string
 }
 
 #ECR
@@ -64,6 +64,13 @@ variable "repository_read_write_access_arns" {
 #NLB
 variable "nlb_name" {
   description = "NLB name"
-  type = string
-  default = ""
+  type        = string
+  default     = ""
+}
+
+#ECS Fargate
+variable "cluster_name" {
+  description = "Cluster name"
+  type        = string
+  default     = ""
 }
