@@ -1,25 +1,3 @@
-# VPC
-variable "vpc_name" {
-  description = "VPC name"
-  type        = string
-}
-
-variable "vpc_cidr_block" {
-  description = "CIDR block for the VPC"
-  type        = string
-}
-
-variable "public_subnets" {
-  description = "A list of public subnets inside the VPC"
-  type        = list(string)
-}
-
-variable "private_subnets" {
-  description = "A list of private subnets inside the VPC"
-  type        = list(string)
-}
-
-#ECR
 variable "repository_name" {
   description = "The name of the repository"
   type        = string
@@ -31,6 +9,7 @@ variable "repository_image_tag_mutability" {
   type        = string
   default     = "IMMUTABLE"
 }
+
 
 variable "repository_image_scan_on_push" {
   description = "Indicates whether images are scanned after being pushed to the repository (`true`) or not scanned (`false`)"
