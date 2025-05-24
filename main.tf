@@ -40,4 +40,5 @@ module "api_gateway" {
   nlb_uri           = "http://${module.nlb.nlb_dns_name}:80"
   vpc_id            = module.vpc.vpc_id
   nlb_port          = var.nlb_port
+  nlb_arn = module.nlb.lb_arn
 }

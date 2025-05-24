@@ -40,3 +40,7 @@ variable "nlb_port" {
   type        = number
 }
 
+variable "nlb_arn" {
+  description = "NLB ARN"
+  type = string
+}
