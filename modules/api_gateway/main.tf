@@ -23,10 +23,9 @@ resource "aws_security_group" "lb_to_api_gw" {
   }
 }
 
-resource "aws_apigatewayv2_vpc_link" "nlb_link" {
-  name               = "${var.name_vpc_link}"
-  subnet_ids         = var.subnet_ids
-  security_group_ids = [var.security_group_id]
+resource "aws_api_gateway_vpc_link" "nlb_link" {
+  name        = "${var.name_vpc_link}"
+  target_arns = [var.nlb_arn]
 }
 
 resource "aws_api_gateway_rest_api" "api" {
@@ -53,10 +52,11 @@ resource "aws_api_gateway_integration" "nlb_integration" {
   http_method             = aws_api_gateway_method.get.http_method
   integration_http_method = "GET"
   type                    = "HTTP"
-  uri                     = var.nlb_uri
+  uri                     = var.nlb_uri                   
   connection_type         = "VPC_LINK"
-  connection_id           = aws_apigatewayv2_vpc_link.nlb_link.id
+  connection_id           = aws_api_gateway_vpc_link.nlb_link.id
 }
+
 
 resource "aws_api_gateway_method_response" "method_response" {
   rest_api_id = aws_api_gateway_rest_api.api.id
