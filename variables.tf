@@ -69,3 +69,22 @@ variable "cluster_name" {
   type        = string
   default     = ""
 }
+
+#API Gateway
+variable "name_vpc_link" {
+  description = "VPC link"
+  type        = string
+  default     = ""
+}
+
+variable "path" {
+  description = "path"
+  type        = string
+  default     = ""
+}
+
+variable "nlb_port" {
+  description = "nlb port"
+  type        = string
+  default     = ""
+}
