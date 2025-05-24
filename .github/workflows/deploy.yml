@@ -3,7 +3,7 @@ name: Deploy ECS laboratory infrastructure
 on:
   push:
     branches:
-      - main  
+      - release  
 
 jobs:
   deploy:
@@ -38,6 +38,11 @@ jobs:
       - name: Terraform Init
         run: terraform init
 
-      - name: Terraform Destroy
-        run: terraform destroy -auto-approve
-        
+      - name: Terraform Validate
+        run: terraform validate
+
+      - name: Terraform Plan
+        run: terraform plan -var-file="terraform.tfvars"
+
+      - name: Terraform Apply
+        run: terraform apply -auto-approve -var-file="terraform.tfvars"
