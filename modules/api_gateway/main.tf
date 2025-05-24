@@ -55,6 +55,7 @@ resource "aws_api_gateway_integration" "nlb_integration" {
   uri                     = var.nlb_uri                   
   connection_type         = "VPC_LINK"
   connection_id           = aws_api_gateway_vpc_link.nlb_link.id
+  depends_on = [ aws_api_gateway_vpc_link.nlb_link ]
 }
 
 
@@ -70,6 +71,7 @@ resource "aws_api_gateway_integration_response" "integration_response" {
   resource_id = aws_api_gateway_resource.nlb_resource.id
   http_method = aws_api_gateway_method.get.http_method
   status_code = "200"
+  depends_on = [ aws_api_gateway_integration.nlb_integration ]
 }
 
 resource "aws_api_gateway_deployment" "deployment" {
