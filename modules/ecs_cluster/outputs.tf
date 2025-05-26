@@ -5,3 +5,7 @@ output "cluster_id" {
 output "log_group_name" {
   value = aws_cloudwatch_log_group.ecs.name
 }
+
+output "cluster_arn" {
+  value = aws_ecs_cluster.main.arn
+}

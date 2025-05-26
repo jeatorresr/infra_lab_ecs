@@ -9,3 +9,5 @@ repository_read_write_access_arns = ["arn:aws:iam::337918032209:role/api-taller-
 name_vpc_link                     = "vpc_link_ecs"
 path                              = "nlb"
 nlb_port                          = 80
+ecs_name                          = "lab"
+container_name                    = "exercise"

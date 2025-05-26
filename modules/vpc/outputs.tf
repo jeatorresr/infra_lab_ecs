@@ -13,3 +13,7 @@ output "private_subnet_ids" {
 output "nat_gateway_id" {
   value = aws_nat_gateway.nat.id
 }
+
+output "security_group_id" {
+  value = aws_security_group.ecs_fargate_sg.id
+}

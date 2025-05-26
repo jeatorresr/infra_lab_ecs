@@ -94,3 +94,15 @@ variable "aws_region" {
   type        = string
   default     = ""
 }
+
+variable "ecs_name" {
+  description = "ECS name"
+  type        = string
+  default     = ""
+}
+
+variable "container_name" {
+  description = "ECS name"
+  type        = string
+  default     = ""
+}

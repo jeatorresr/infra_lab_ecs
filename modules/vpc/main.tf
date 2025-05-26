@@ -94,3 +94,30 @@ resource "aws_route_table_association" "private" {
 }
 
 data "aws_availability_zones" "available" {}
+
+resource "aws_security_group" "ecs_fargate_sg" {
+  name        = "ecs-fargate-sg"
+  description = "Allow traffic to ECS Fargate tasks"
+  vpc_id      = aws_vpc.main.id
+
+  # Entrada (por ejemplo desde NLB)
+  ingress {
+    description = "Allow TCP traffic from anywhere to container port"
+    from_port   = 80
+    to_port     = 80
+    protocol    = "tcp"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  # Salida (hacia internet o servicios internos)
+  egress {
+    from_port   = 0
+    to_port     = 0
+    protocol    = "-1"
+    cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "ecs-fargate-sg"
+  }
+}
