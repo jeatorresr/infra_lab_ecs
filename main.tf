@@ -42,3 +42,22 @@ module "api_gateway" {
   nlb_port          = var.nlb_port
   nlb_arn           = module.nlb.lb_arn
 }
+
+module "ecs_task" {
+  source                  = "./modules/ecs_task"
+  ecs_name                = var.ecs_name
+  cluster_arn             = module.aws_ecs_cluster.cluster_arn
+  image                   = "latest"
+  container_name          = var.container_name
+  container_port          = 80
+  cpu                     = "256"
+  memory                  = "512"
+  subnet_ids              = module.vpc.private_subnet_ids
+  desired_count           = 1
+  target_group_arn        = module.nlb.target_group_arn
+  log_group               = module.aws_ecs_cluster.log_group_name
+  log_region              = var.aws_region
+  log_prefix              = "lab"
+  nlb_listener_dependency = module.nlb
+  security_group_id       = module.vpc.security_group_id
+}
