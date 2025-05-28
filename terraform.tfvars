@@ -11,3 +11,5 @@ path                              = "nlb"
 nlb_port                          = 80
 ecs_name                          = "lab"
 container_name                    = "exercise"
+aws_region                        = "us-east-1"
+
