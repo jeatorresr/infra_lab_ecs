@@ -75,6 +75,8 @@ resource "aws_ecs_service" "ecs_service" {
   desired_count   = var.desired_count
   task_definition = aws_ecs_task_definition.ecs_task_definition.arn
 
+  force_new_deployment = true
+
   network_configuration {
     subnets          = var.subnet_ids
     assign_public_ip = true
