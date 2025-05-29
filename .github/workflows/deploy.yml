@@ -3,7 +3,7 @@ name: Deploy ECS laboratory infrastructure
 on:
   push:
     branches:
-      - main
+      - release
 
 jobs:
   deploy:
