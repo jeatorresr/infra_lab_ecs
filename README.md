@@ -29,14 +29,41 @@ This project contains the Terraform templates and a GitHub Action workflow to de
 - [Authors](#authors)
 
 ## Project Structure
-
-- Modules:
-├── api_gateway        # Exposes the NLB via API Gateway (HTTP or REST)
-├── ecr                # Creates an ECR repository for Docker images
-├── ecs_cluster        # Defines the ECS cluster (Fargate-compatible)
-├── ecs_task           # Creates the Task Definition + ECS Service
-├── nlb                # Configures the Network Load Balancer and Target Group
-└── vpc                # Sets up the base VPC and subnets
+```text 
+.
+├── Architecture Diagram.drawio.png
+├── backend.tf
+├── main.tf
+├── modules
+│   ├── api_gateway
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── ecr
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── ecs_cluster
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── ecs_task
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   ├── nlb
+│   │   ├── main.tf
+│   │   ├── outputs.tf
+│   │   └── variables.tf
+│   └── vpc
+│       ├── main.tf
+│       ├── outputs.tf
+│       └── variables.tf
+├── outputs.tf
+├── README.md
+├── terraform.tfvars
+└── variables.tf
+```
 
 - GitHub Workflow:
   - .github/workflows/deploy.yml: Automates the deployment process using AWS CLI and GitHub Actions.
