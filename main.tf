@@ -43,11 +43,15 @@ module "api_gateway" {
   nlb_arn           = module.nlb.lb_arn
 }
 
+data "aws_ssm_parameter" "image_uri" {
+  name = "lab-ecs"
+}
+
 module "ecs_task" {
   source                  = "./modules/ecs_task"
   ecs_name                = var.ecs_name
   cluster_arn             = module.aws_ecs_cluster.cluster_arn
-  image                   = "337918032209.dkr.ecr.us-east-1.amazonaws.com/ecr_lab_ecs:latest"
+  image                   = data.aws_ssm_parameter.image_uri.value
   container_name          = var.container_name
   container_port          = 80
   cpu                     = "256"
